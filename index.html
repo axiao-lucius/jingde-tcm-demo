@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>景德中药 · 数智化平台</title>
+<style>
+:root{--p:#1a5276;--s:#2e86c1;--a:#148f77;--bg:#f0f2f5;--c:#fff;--t:#333;--g:#888;--r:12px;--sh:0 2px 12px rgba(0,0,0,.08)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;background:var(--bg);color:var(--t);font-size:14px;line-height:1.6;padding-bottom:70px;-webkit-text-size-adjust:100%}
+.hd{background:linear-gradient(135deg,var(--p),var(--s),var(--a));color:#fff;padding:20px 16px 16px;position:sticky;top:0;z-index:100}
+.hd h1{font-size:18px;font-weight:700}.hd .su{font-size:11px;opacity:.8;margin-top:2px}
+.hd .bg{background:rgba(255,255,255,.25);padding:2px 8px;border-radius:10px;font-size:10px;float:right;margin-top:-20px}
+.tb{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;border-top:1px solid #eee;z-index:100;padding-bottom:env(safe-area-inset-bottom)}
+.ti{flex:1;text-align:center;padding:8px 0 6px;color:var(--g);font-size:10px;cursor:pointer}.ti.ac{color:var(--s)}.ti .ic{font-size:22px;display:block;margin-bottom:2px}
+.pg{display:none;padding:12px;animation:fi .3s}.pg.ac{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.cd{background:var(--c);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--sh)}
+.ct{font-size:15px;font-weight:700;color:var(--p);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.kg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px}
+.ki{background:var(--c);border-radius:var(--r);padding:14px;text-align:center;box-shadow:var(--sh)}
+.ki .n{font-size:24px;font-weight:800;background:linear-gradient(135deg,var(--s),var(--a));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ki .l{font-size:11px;color:var(--g);margin-top:4px}.ki .tr{font-size:11px;margin-top:2px}.up{color:#27ae60}.dn{color:#e74c3c}
+.bc{display:flex;align-items:flex-end;gap:6px;height:120px;padding:10px 0}
+.bcl{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.br{width:100%;border-radius:4px 4px 0 0;background:linear-gradient(to top,var(--s),var(--a));min-height:4px}
+.bl{font-size:9px;color:var(--g)}.bv{font-size:9px;font-weight:700;color:var(--p)}
+.sa{width:100%;aspect-ratio:1;background:#1a1a2e;border-radius:var(--r);position:relative;overflow:hidden;margin-bottom:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:pointer}
+.sl{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#00ff88,transparent);animation:sm 2s linear infinite;display:none}
+@keyframes sm{0%{top:0}100%{top:100%}}
+.sp{text-align:center;color:rgba(255,255,255,.6)}.sp .si{font-size:48px;margin-bottom:8px}
+.rc{display:none}.rc.sh{display:block;animation:fi .5s}
+.cb{height:8px;background:#eee;border-radius:4px;overflow:hidden;margin:6px 0}
+.cf{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--a),#27ae60);transition:width 1s ease}
+.tr2{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.tg{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600}
+.tgn{background:#eafaf1;color:#27ae60}.tbl{background:#ebf5fb;color:#2e86c1}.tor{background:#fef9e7;color:#e67e22}
+.tin{display:flex;gap:8px;margin-bottom:12px}
+.tin input{flex:1;border:1px solid #ddd;border-radius:8px;padding:10px 12px;font-size:14px;outline:none}
+.tin input:focus{border-color:var(--s)}
+.bn{background:linear-gradient(135deg,var(--s),var(--a));color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap}
+.bn:active{opacity:.8}
+.tl{position:relative;padding-left:24px}.tl::before{content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:#e0e0e0}
+.tli{position:relative;margin-bottom:16px}
+.tld{position:absolute;left:-20px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--s);border:2px solid #fff;box-shadow:0 0 0 2px var(--s)}
+.tlt{font-size:11px;color:var(--g)}.tln{font-size:13px;font-weight:600;margin:2px 0}.tls{font-size:12px;color:#666}
+.gr{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.ga{text-align:center;padding:12px 8px;background:var(--c);border-radius:var(--r);box-shadow:var(--sh)}
+.gc{width:60px;height:60px;border-radius:50%;margin:0 auto 6px;position:relative;display:flex;align-items:center;justify-content:center}
+.gc svg{transform:rotate(-90deg);width:60px;height:60px}.gc circle{fill:none;stroke-width:5;stroke-linecap:round}
+.gc .bgs{stroke:#eee}.gc .fgs{transition:stroke-dashoffset 1s ease}
+.gv{position:absolute;font-size:13px;font-weight:700;color:var(--p)}.gl{font-size:10px;color:var(--g)}
+.sd{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}.sok{background:#27ae60}.swn{background:#f39c12}
+.ll{max-height:200px;overflow-y:auto;font-size:12px}
+.li2{padding:6px 0;border-bottom:1px solid #f0f0f0;display:flex;gap:8px}.lt{color:var(--g);white-space:nowrap;font-size:11px}
+.sb{position:relative;margin-bottom:12px}
+.sb input{width:100%;border:1px solid #ddd;border-radius:20px;padding:10px 16px 10px 36px;font-size:14px;outline:none}
+.sb::before{content:'🔍';position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px}
+.hn{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:10px 0}
+.nd{padding:6px 14px;border-radius:16px;font-size:12px;font-weight:600;cursor:pointer;border:2px solid transparent}
+.nd.cn{background:var(--p);color:#fff;font-size:14px;padding:10px 20px}.nd.rl{background:#ebf5fb;color:var(--s);border-color:#d4e6f1}.nd.ef{background:#eafaf1;color:var(--a);border-color:#d5f5e3}
+.fd{display:none;margin-top:12px}.fd.sh{display:block;animation:fi .3s}
+.ri{width:100%;border:1px solid #ddd;border-radius:8px;padding:10px 12px;font-size:13px;min-height:80px;resize:none;outline:none;font-family:inherit}
+.rr{margin-top:12px;display:none}.rr.sh{display:block;animation:fi .3s}
+.ci{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid #f5f5f5}
+.cic{font-size:16px;flex-shrink:0;margin-top:1px}
+.cw{color:#e67e22}.co{color:#27ae60}.ce{color:#e74c3c}
+.ts{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.75);color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;z-index:999;display:none;text-align:center}
+.ts.sh{display:block;animation:fi .3s}
+@media(max-width:480px){.hd h1{font-size:17px}.ki .n{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="hd"><span class="bg">DEMO v1.0</span><h1>景德中药 · 数智平台</h1><div class="su">百年老字号 × AI新质生产力</div></div>
+
+
+<!-- Dashboard -->
+<div class="pg ac" id="p-dash">
+<div class="kg">
+<div class="ki"><div class="n">¥2,847万</div><div class="l">本月营收</div><div class="tr up">↑ 12.3%</div></div>
+<div class="ki"><div class="n">1,286</div><div class="l">生产批次</div><div class="tr up">↑ 8.7%</div></div>
+<div class="ki"><div class="n">99.2%</div><div class="l">质检合格率</div><div class="tr up">↑ 0.5%</div></div>
+<div class="ki"><div class="n">437</div><div class="l">合作医院</div><div class="tr up">+12家</div></div>
+</div>
+<div class="cd"><div class="ct">📊 月度产量趋势（吨）</div><div class="bc" id="pc"></div></div>
+<div class="cd"><div class="ct">🏭 产线实时状态</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:#f8f9fa;border-radius:8px"><span><span class="sd sok"></span>A线·鲜竹沥</span><span style="font-size:12px;color:#27ae60">运行中 98.5%</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:#f8f9fa;border-radius:8px"><span><span class="sd sok"></span>B线·精制饮片</span><span style="font-size:12px;color:#27ae60">运行中 96.2%</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:#f8f9fa;border-radius:8px"><span><span class="sd swn"></span>C线·古法炮制</span><span style="font-size:12px;color:#f39c12">维护中 14:30恢复</span></div>
+</div></div>
+<div class="cd"><div class="ct">📈 中药材价格趋势（元/kg）</div>
+<div style="position:relative;width:100%;height:180px;overflow:hidden" id="priceChart"></div>
+<div style="display:flex;justify-content:center;gap:16px;margin-top:8px;font-size:11px">
+<span style="color:#e74c3c">● 酸枣仁</span><span style="color:#2e86c1">● 灯盏花</span><span style="color:#148f77">● 白术</span><span style="color:#e67e22">● 茯苓</span>
+</div></div>
+<div class="cd"><div class="ct">🔔 今日告警</div><div style="font-size:13px;color:#666">
+<div style="padding:6px 0;border-bottom:1px solid #f5f5f5">⚠️ 09:23 B线3号炒药机温度偏高(+2.3℃)，已自动调节</div>
+<div style="padding:6px 0;border-bottom:1px solid #f5f5f5">✅ 08:45 酸枣仁AI鉴定完成，合格率100%</div>
+<div style="padding:6px 0">📦 08:12 广州经销商入库校验通过，320件</div>
+</div></div>
+</div>
+
+<!-- AI -->
+<div class="pg" id="p-ai">
+<div class="cd"><div class="ct">🤖 AI中药材智能鉴定</div>
+<p style="font-size:12px;color:#888;margin-bottom:10px">拍照上传药材图片，AI秒级识别品种、等级与真伪</p>
+<div class="sa" id="sa" onclick="doScan()"><div class="sl" id="sln"></div><div class="sp" id="sph"><div class="si">📷</div><div>点击模拟拍照识别</div></div></div>
+<div class="rc" id="ar">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><strong style="font-size:16px;color:var(--p)" id="an">--</strong><span class="tg tgn" id="ag">--</span></div>
+<div style="font-size:12px;color:#666">置信度</div><div class="cb"><div class="cf" id="ac" style="width:0%"></div></div>
+<div class="tr2" id="at"></div>
+<div style="margin-top:10px;padding:10px;background:#f8f9fa;border-radius:8px;font-size:12px;color:#555" id="ad"></div>
+</div></div>
+<div class="cd"><div class="ct">📋 近期鉴定记录</div><div style="font-size:12px">
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f5f5f5"><span>酸枣仁·河北邢台</span><span class="tg tgn" style="font-size:10px">正品·特级</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f5f5f5"><span>灯盏花·云南文山</span><span class="tg tgn" style="font-size:10px">正品·一级</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0"><span>白术·浙江磐安</span><span class="tg tbl" style="font-size:10px">正品·二级</span></div>
+</div></div>
+</div>
+
+<!-- Trace -->
+<div class="pg" id="p-trace">
+<div class="cd"><div class="ct">🔍 一物一码追溯查询</div>
+<div class="tin"><input type="text" id="tc" placeholder="输入追溯码" value="JD2026052800186"><button class="bn" onclick="doTrace()">查询</button></div>
+<div id="tr" style="display:none">
+<div style="background:linear-gradient(135deg,#ebf5fb,#eafaf1);border-radius:8px;padding:12px;margin-bottom:12px">
+<div style="font-size:16px;font-weight:700;color:var(--p)">鲜竹沥 · 精制饮片</div>
+<div style="font-size:12px;color:#666;margin-top:4px">批号：JCZL-20260525-003 | 规格：10ml×6支/盒</div>
+<div style="margin-top:6px"><span class="tg tgn">✅ 正品验证通过</span></div>
+</div>
+<div class="ct" style="font-size:14px">全链路追溯</div>
+<div class="tl">
+<div class="tli"><div class="tld"></div><div class="tlt">2026-05-20 06:30</div><div class="tln">🌿 原料采收</div><div class="tls">江西浮梁县竹林基地·鲜竹采集·22℃</div></div>
+<div class="tli"><div class="tld"></div><div class="tlt">2026-05-21 08:00</div><div class="tln">🔬 入厂检验</div><div class="tls">农残合格·重金属合格·水分12.3%</div></div>
+<div class="tli"><div class="tld"></div><div class="tlt">2026-05-22 14:00</div><div class="tln">🔥 古法炮制</div><div class="tls">干馏法·210℃·4.5h·操作员：王师傅</div></div>
+<div class="tli"><div class="tld"></div><div class="tlt">2026-05-23 09:30</div><div class="tln">✅ 成品质检</div><div class="tls">愈创木酚0.82%(≥0.6%)·pH4.2·澄明度合格</div></div>
+<div class="tli"><div class="tld"></div><div class="tlt">2026-05-25 10:00</div><div class="tln">📦 包装赋码</div><div class="tls">一物一码赋码·关联批次JCZL-20260525-003</div></div>
+<div class="tli"><div class="tld"></div><div class="tlt">2026-05-27 16:30</div><div class="tln">🚚 出库发货</div><div class="tls">发往广州医药有限公司·320件·冷链运输</div></div>
+</div></div></div>
+</div>
+
+<!-- Process -->
+<div class="pg" id="p-proc">
+<div class="cd"><div class="ct">🏭 古法炮制实时监控</div>
+<div style="font-size:12px;color:#888;margin-bottom:10px">A线·鲜竹沥干馏·批次 JCZL-20260528-005</div>
+<div class="gr">
+<div class="ga"><div class="gc"><svg viewBox="0 0 60 60"><circle class="bgs" cx="30" cy="30" r="25"/><circle class="fgs" cx="30" cy="30" r="25" stroke="#e74c3c" stroke-dasharray="157" stroke-dashoffset="20"/></svg><span class="gv" id="vt">210℃</span></div><div class="gl">炉温</div></div>
+<div class="ga"><div class="gc"><svg viewBox="0 0 60 60"><circle class="bgs" cx="30" cy="30" r="25"/><circle class="fgs" cx="30" cy="30" r="25" stroke="#2e86c1" stroke-dasharray="157" stroke-dashoffset="40"/></svg><span class="gv" id="vh">65%</span></div><div class="gl">湿度</div></div>
+<div class="ga"><div class="gc"><svg viewBox="0 0 60 60"><circle class="bgs" cx="30" cy="30" r="25"/><circle class="fgs" cx="30" cy="30" r="25" stroke="#148f77" stroke-dasharray="157" stroke-dashoffset="60"/></svg><span class="gv" id="vm">3.2h</span></div><div class="gl">已用时</div></div>
+</div>
+<div style="display:flex;gap:8px;margin-bottom:12px">
+<div style="flex:1;background:#eafaf1;border-radius:8px;padding:10px;text-align:center"><div style="font-size:11px;color:#888">目标温度</div><div style="font-weight:700;color:#27ae60">190-230℃</div></div>
+<div style="flex:1;background:#ebf5fb;border-radius:8px;padding:10px;text-align:center"><div style="font-size:11px;color:#888">目标时长</div><div style="font-weight:700;color:#2e86c1">4.0-5.0h</div></div>
+<div style="flex:1;background:#fef9e7;border-radius:8px;padding:10px;text-align:center"><div style="font-size:11px;color:#888">AI预测收率</div><div style="font-weight:700;color:#e67e22">8.7%</div></div>
+</div></div>
+<div class="cd"><div class="ct">📝 AI工艺日志</div><div class="ll" id="pl">
+<div class="li2"><span class="lt">14:48</span><span>🟢 温度稳定210±1℃，AI判定进度正常</span></div>
+<div class="li2"><span class="lt">14:35</span><span>🟡 湿度升至68%，排湿阀自动开启</span></div>
+<div class="li2"><span class="lt">14:20</span><span>🟢 AI视觉：竹沥色泽琥珀色，符合预期</span></div>
+<div class="li2"><span class="lt">14:05</span><span>🟢 二氢丁香酚转化率62%，预计15:30达标</span></div>
+<div class="li2"><span class="lt">13:50</span><span>🔵 批次启动，原料120kg，操作员确认</span></div>
+</div></div>
+</div>
+
+<!-- Knowledge & Pharmacy -->
+<div class="pg" id="p-know">
+<div class="cd"><div class="ct">📚 经典名方知识图谱</div>
+<div class="sb"><input type="text" placeholder="搜索方剂、药材或功效..." id="ks"></div>
+<div class="hn" id="hnet">
+<div class="nd cn" onclick="showFd()">鲜竹沥</div>
+<div class="nd rl">竹茹</div><div class="nd rl">半夏</div><div class="nd rl">陈皮</div><div class="nd rl">茯苓</div>
+<div class="nd ef">清热化痰</div><div class="nd ef">止咳平喘</div><div class="nd ef">中风痰迷</div>
+</div>
+<div class="fd" id="fdd">
+<div style="background:#f8f9fa;border-radius:8px;padding:12px;margin-top:8px">
+<div style="font-weight:700;color:var(--p);margin-bottom:6px">鲜竹沥方 · 《本草纲目》</div>
+<div style="font-size:12px;color:#555;line-height:1.8">
+<strong>组成：</strong>鲜竹沥、半夏、陈皮、茯苓、甘草<br>
+<strong>功效：</strong>清热化痰，止咳平喘<br>
+<strong>主治：</strong>痰热咳嗽、中风痰迷、惊风癫痫<br>
+<strong>AI分析：</strong>含愈创木酚、竹沥多糖等12种活性物质，具有抗炎、祛痰、神经保护作用<br>
+<strong>景德特色：</strong>古法干馏210℃精准控温，愈创木酚含量0.82%（国标≥0.6%）
+</div></div></div></div>
+<div class="cd"><div class="ct">💊 AI智能审方</div>
+<p style="font-size:12px;color:#888;margin-bottom:8px">输入处方，AI自动审核配伍禁忌与用量</p>
+<textarea class="ri" id="rxi">鲜竹沥 30ml&#10;半夏 9g&#10;陈皮 6g&#10;茯苓 12g&#10;甘草 3g&#10;附子 15g</textarea>
+<button class="bn" style="width:100%;margin-top:8px" onclick="checkRx()">AI 审方</button>
+<div class="rr" id="rxr"><div style="margin-top:12px">
+<div class="ci"><span class="cic cw">⚠️</span><span class="cw"><strong>配伍禁忌：</strong>半夏与附子同用属"十八反"范畴，建议医师确认</span></div>
+<div class="ci"><span class="cic co">✅</span><span class="co">鲜竹沥30ml — 安全范围(15-60ml)</span></div>
+<div class="ci"><span class="cic co">✅</span><span class="co">半夏9g — 合规(3-9g)，建议姜制减毒</span></div>
+<div class="ci"><span class="cic co">✅</span><span class="co">陈皮6g、茯苓12g、甘草3g — 均合规</span></div>
+<div class="ci"><span class="cic ce">❗</span><span class="ce"><strong>附子15g：</strong>达上限，需先煎30-60分钟减毒</span></div>
+<div style="margin-top:10px;padding:10px;background:#ebf5fb;border-radius:8px;font-size:12px;color:var(--s)">
+💡 <strong>AI建议：</strong>本方以鲜竹沥为君清热化痰，半夏陈皮为臣理气化痰，茯苓健脾渗湿为佐，甘草调和为使。组方合理，附子用量需谨慎确认。</div>
+</div></div></div>
+</div>
+
+
+<div class="tb">
+<div class="ti ac" onclick="sw('dash',this)"><span class="ic">📊</span>驾驶舱</div>
+<div class="ti" onclick="sw('ai',this)"><span class="ic">🤖</span>AI鉴定</div>
+<div class="ti" onclick="sw('trace',this)"><span class="ic">🔍</span>追溯</div>
+<div class="ti" onclick="sw('proc',this)"><span class="ic">🏭</span>炮制</div>
+<div class="ti" onclick="sw('know',this)"><span class="ic">💊</span>智药房</div>
+</div>
+<div class="ts" id="toast"></div>
+
+<script>
+function sw(id,el){
+document.querySelectorAll('.pg').forEach(function(p){p.classList.remove('ac')});
+document.querySelectorAll('.ti').forEach(function(t){t.classList.remove('ac')});
+document.getElementById('p-'+id).classList.add('ac');
+el.classList.add('ac');
+if(id==='proc')startProc();
+}
+
+// Dashboard bar chart
+(function(){
+var d=[{m:'1月',v:186},{m:'2月',v:165},{m:'3月',v:210},{m:'4月',v:228},{m:'5月',v:245},{m:'6月',v:238},{m:'7月',v:260}];
+var mx=Math.max.apply(null,d.map(function(x){return x.v}));
+var c=document.getElementById('pc');
+d.forEach(function(x){
+var p=Math.round(x.v/mx*100);
+c.innerHTML+='<div class="bcl"><div class="bv">'+x.v+'</div><div class="br" style="height:'+p+'%"></div><div class="bl">'+x.m+'</div></div>';
+});
+})();
+
+// Price trend line chart (pure SVG)
+(function(){
+var months=['1月','2月','3月','4月','5月','6月','7月'];
+var series=[
+{name:'酸枣仁',color:'#e74c3c',data:[320,335,348,342,360,375,390]},
+{name:'灯盏花',color:'#2e86c1',data:[180,175,185,192,188,195,205]},
+{name:'白术',color:'#148f77',data:[85,88,92,90,95,98,102]},
+{name:'茯苓',color:'#e67e22',data:[42,45,43,48,50,52,55]}
+];
+var W=340,H=160,pad={t:15,r:10,b:25,l:35};
+var cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;
+var allVals=[];series.forEach(function(s){allVals=allVals.concat(s.data)});
+var mn=Math.min.apply(null,allVals)*0.9,mx2=Math.max.apply(null,allVals)*1.05;
+function xPos(i){return pad.l+i*(cw/(months.length-1))}
+function yPos(v){return pad.t+ch-(v-mn)/(mx2-mn)*ch}
+var svg='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:100%">';
+// Grid lines
+for(var g=0;g<4;g++){var gy=pad.t+ch*g/3;svg+='<line x1="'+pad.l+'" y1="'+gy+'" x2="'+(W-pad.r)+'" y2="'+gy+'" stroke="#eee" stroke-width="1"/>';
+var gv=Math.round(mx2-(mx2-mn)*g/3);svg+='<text x="'+(pad.l-4)+'" y="'+(gy+3)+'" text-anchor="end" font-size="8" fill="#aaa">'+gv+'</text>';}
+// X labels
+months.forEach(function(m,i){svg+='<text x="'+xPos(i)+'" y="'+(H-4)+'" text-anchor="middle" font-size="8" fill="#aaa">'+m+'</text>';});
+// Lines + dots
+series.forEach(function(s){
+var pts='';s.data.forEach(function(v,i){pts+=xPos(i)+','+yPos(v)+' '});
+svg+='<polyline points="'+pts.trim()+'" fill="none" stroke="'+s.color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+s.data.forEach(function(v,i){svg+='<circle cx="'+xPos(i)+'" cy="'+yPos(v)+'" r="2.5" fill="'+s.color+'" stroke="#fff" stroke-width="1"/>';});
+});
+svg+='</svg>';
+document.getElementById('priceChart').innerHTML=svg;
+})();
+
+// Toast
+function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('sh');setTimeout(function(){t.classList.remove('sh')},1500);}
+
+// AI Scan
+var herbs=[
+{n:'酸枣仁',g:'特级',c:98.6,t:['正品','河北邢台','炒制'],d:'鼠李科植物酸枣干燥成熟种子。AI检测皂苷A含量0.12%(标准≥0.08%)，黄酮类丰富。'},
+{n:'灯盏花',g:'一级',c:97.2,t:['正品','云南文山','野生'],d:'菊科短葶飞蓬干燥全草。灯盏乙素1.8%(标准≥1.0%)，品质优良。'},
+{n:'白术',g:'二级',c:95.8,t:['正品','浙江磐安','麸炒'],d:'菊科白术干燥根茎。麸炒品色泽均匀，苍术酮达标。'}
+];
+var si=0;
+function doScan(){
+var ln=document.getElementById('sln'),ph=document.getElementById('sph'),res=document.getElementById('ar');
+ph.style.display='none';ln.style.display='block';res.classList.remove('sh');
+showToast('AI识别中...');
+setTimeout(function(){
+ln.style.display='none';
+var h=herbs[si%herbs.length];si++;
+document.getElementById('an').textContent=h.n;
+document.getElementById('ag').textContent=h.g;
+document.getElementById('ac').style.width=h.c+'%';
+var tags='';h.t.forEach(function(x){tags+='<span class="tg tgn">'+x+'</span>'});
+document.getElementById('at').innerHTML=tags;
+document.getElementById('ad').textContent=h.d;
+res.classList.add('sh');
+showToast('识别完成');
+},2000);
+}
+
+// Trace
+function doTrace(){
+var code=document.getElementById('tc').value;
+if(!code){showToast('请输入追溯码');return;}
+showToast('查询中...');
+setTimeout(function(){
+document.getElementById('tr').style.display='block';
+showToast('查询成功');
+},800);
+}
+
+// Process sim
+var procTimer=null;
+function startProc(){
+if(procTimer)return;
+var temp=210,hum=65,min=192;
+procTimer=setInterval(function(){
+temp=210+Math.round((Math.random()-0.5)*4);
+hum=65+Math.round((Math.random()-0.5)*6);
+min+=1;
+document.getElementById('vt').textContent=temp+'℃';
+document.getElementById('vh').textContent=hum+'%';
+document.getElementById('vm').textContent=(min/60).toFixed(1)+'h';
+},3000);
+}
+
+// Knowledge
+function showFd(){document.getElementById('fdd').classList.toggle('sh');}
+
+// Rx Check
+function checkRx(){
+var v=document.getElementById('rxi').value;
+if(!v.trim()){showToast('请输入处方');return;}
+showToast('AI审方中...');
+setTimeout(function(){
+document.getElementById('rxr').classList.add('sh');
+showToast('审方完成');
+},1000);
+}
+</script>
+<div style="text-align:center;padding:20px 16px;color:#999;font-size:11px;border-top:1px solid #eee;margin-top:12px">
+<p>景德中药数智化平台 Demo v1.0</p>
+<p>百年老字号 × AI新质生产力</p>
+<p style="margin-top:4px">© 2026 江西景德中药股份有限公司</p>
+</div>
+</body>
+</html>
